@@ -4,7 +4,7 @@ Import sample data, transfer data for landofcoder extensions
 
 ## 1. Documentation
 
-## 2. How to install SMTP Extension
+## 2. How to install Lof Setup Extension
 
 ### Install via composer (recommend)
 
