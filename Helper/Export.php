@@ -268,6 +268,8 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
         "lof_rewardpoints_earning_rule", "lof_rewardpoints_product_earning_points","lof_rewardpoints_earning_rule_relationships","lof_rewardpoints_earning_rule_customer_group","lof_rewardpoints_purchase","lof_rewardpoints_spending_rule","lof_rewardpoints_spending_rule_customer_group","lof_rewardpoints_product_spending_points","lof_rewardpoints_spending_rule_relationships","lof_rewardpoints_transaction","lof_rewardpoints_customer","lof_rewardpoints_email"],
          "Lof_CouponCode" => [
         "lof_coupon_code_log", "lof_couponcode_coupon","lof_couponcode_rule"],
+        "Lof_ProductTags" => [
+            "lof_producttags_tag", "lof_producttags_product","lof_producttags_store"],
         "Lof_StoreLocator" => [
         "lof_storelocator_storelocator", "lof_storelocator_storelocator_store","lof_storelocator_storelocator_tag","lof_storelocator_storelocator_category","lof_storelocator_dealer","lof_storelocator_dealer_category","lof_storelocator_dealer_review"],
         "Lof_RequestForQuote" => [
