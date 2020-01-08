@@ -44,7 +44,7 @@ class Import extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_lofdata = $lofData;
     }
 
-    public function buildQueryImport($data = array(), $table_name = "", $override = true, $store_id = 0, $where = '') 
+    public function buildQueryImport($data = array(), $table_name = "", $override = true, $store_id = 0, $ignore_columns = null,  $where = '') 
     {
         $query = false;
         $binds = array();
@@ -63,6 +63,9 @@ class Import extends \Magento\Framework\App\Helper\AbstractHelper
                     if($key == "store_id" && !in_array($val, $stores)) {
                         $val = $store_id;
                     }
+                    if($ignore_columns && in_array($key, $ignore_columns)){
+						continue;
+					}
                     $fields[] = "`".$key."`";
                     $values[] = ":".strtolower($key);
                     $binds[strtolower($key)] = $val;

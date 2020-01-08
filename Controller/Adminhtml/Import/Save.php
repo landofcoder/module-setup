@@ -153,6 +153,13 @@ class Save extends \Magento\Backend\App\Action
                         $tables = $_module['tables'];
                         foreach ($tables as $tablename => $rows) {
                             $table_name = $this->_resource->getTableName($tablename);
+                            $ignore_columns = [];
+                            if($table_name == "cms_block"){
+                                $ignore_columns[] = 'block_id';
+                            }
+                            if($table_name == "cms_page"){
+                                $ignore_columns[] = 'page_id';
+                            }
                             if(false !== strpos($table_name, "lof_")){
                                 $connection->query("SET FOREIGN_KEY_CHECKS=0;");
                                 $exist = false;
@@ -178,7 +185,7 @@ class Save extends \Magento\Backend\App\Action
                             foreach ($rows as $row) {
                                 if($exist) {
                                     $where = '';
-                                    $query_data = $this->_lofImport->buildQueryImport($row, $table_name, $overwrite, $data['store_id']); 
+                                    $query_data = $this->_lofImport->buildQueryImport($row, $table_name, $overwrite, $data['store_id'], $ignore_columns); 
                                     $connection->query($query_data[0].$where, $query_data[1]);
                                 }
                                 

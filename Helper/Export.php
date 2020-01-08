@@ -272,8 +272,9 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
             "lof_producttags_tag", "lof_producttags_product","lof_producttags_store"],
         "Lof_StoreLocator" => [
         "lof_storelocator_storelocator", "lof_storelocator_storelocator_store","lof_storelocator_storelocator_tag","lof_storelocator_storelocator_category","lof_storelocator_dealer","lof_storelocator_dealer_category","lof_storelocator_dealer_review"],
-        "Lof_RequestForQuote" => [
-        "lof_rfq_quote"]
+        "Lof_RequestForQuote" => ["lof_rfq_quote"],
+        "Lof_Supplier" => ["lof_supplier_group", "lof_supplier","lof_supplier_store","lof_supplier_product","lof_supplier_price_lists"],
+        "Lof_PromotionBar" => ["lof_promotionbar_banner", "lof_promotionbar_store","lof_promotionbar_customer_group","lof_promotionbar_product","lof_promotionbar_category"]
         ];
         return $sql_tables;
     }
