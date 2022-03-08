@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -60,15 +60,15 @@ class Save extends \Magento\Backend\App\Action
     protected $_configResource;
 
     /**
-     * @param \Magento\Backend\App\Action\Context                          $context           
-     * @param \Magento\Framework\View\Result\PageFactory                   $resultPageFactory 
-     * @param \Lof\Setup\Helper\Import                                     $lofImport           
-     * @param \Magento\Framework\Filesystem                                $filesystem        
-     * @param \Magento\Store\Model\StoreManagerInterface                   $storeManager      
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface           $scopeConfig       
-     * @param \Magento\Framework\App\ResourceConnection                    $resource          
+     * @param \Magento\Backend\App\Action\Context                          $context
+     * @param \Magento\Framework\View\Result\PageFactory                   $resultPageFactory
+     * @param \Lof\Setup\Helper\Import                                     $lofImport
+     * @param \Magento\Framework\Filesystem                                $filesystem
+     * @param \Magento\Store\Model\StoreManagerInterface                   $storeManager
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface           $scopeConfig
+     * @param \Magento\Framework\App\ResourceConnection                    $resource
      * @param \Magento\Framework\App\Config\ConfigResource\ConfigInterface $configResource
-     * @param \Magento\Catalog\Model\Product\Media\Config $mediaConfig    
+     * @param \Magento\Catalog\Model\Product\Media\Config $mediaConfig
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -152,6 +152,7 @@ class Save extends \Magento\Backend\App\Action
                     if(isset($_module['tables'])) {
                         $tables = $_module['tables'];
                         foreach ($tables as $tablename => $rows) {
+                            $exist = false;
                             $table_name = $this->_resource->getTableName($tablename);
                             $ignore_columns = [];
                             if($table_name == "cms_block"){
@@ -160,15 +161,15 @@ class Save extends \Magento\Backend\App\Action
                             if($table_name == "cms_page"){
                                 $ignore_columns[] = 'page_id';
                             }
-                            if(false !== strpos($table_name, "lof_")){
+                            if(false !== strpos($table_name, "lof_") || false !== strpos($table_name, "lofmp_")){
                                 $connection->query("SET FOREIGN_KEY_CHECKS=0;");
-                                $exist = false;
+
                                 $check_query = "SHOW TABLES LIKE '".$table_name."'";
                                 $total = $connection->fetchAll($check_query);
                                 if(count($total) > 0) {
                                     $exist = true;
                                 }
-                                
+
                                 if(!$overwrite && $exist) {
                                     //$connection->query("TRUNCATE `".$table_name."`");
                                 }
@@ -185,10 +186,10 @@ class Save extends \Magento\Backend\App\Action
                             foreach ($rows as $row) {
                                 if($exist) {
                                     $where = '';
-                                    $query_data = $this->_lofImport->buildQueryImport($row, $table_name, $overwrite, $data['store_id'], $ignore_columns); 
+                                    $query_data = $this->_lofImport->buildQueryImport($row, $table_name, $overwrite, $data['store_id'], $ignore_columns);
                                     $connection->query($query_data[0].$where, $query_data[1]);
                                 }
-                                
+
                             }
                         }
                         $connection->query("SET FOREIGN_KEY_CHECKS=1;");
