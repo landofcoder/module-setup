@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -25,12 +25,12 @@ use \Magento\Framework\Module\Dir;
 class Export extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
- * @var \Magento\Framework\Xml\Parser 
+ * @var \Magento\Framework\Xml\Parser
 */
     protected $parser;
 
     /**
- * @var \Magento\Store\Model\StoreManagerInterface 
+ * @var \Magento\Store\Model\StoreManagerInterface
 */
     protected $_storeManager;
 
@@ -47,11 +47,11 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
     protected $_moduleDir;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context              $context      
-     * @param \Magento\Store\Model\StoreManagerInterface         $storeManager 
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig  
-     * @param \Magento\Framework\App\ResourceConnection          $resource     
-     * @param Dir                                                $moduleDir    
+     * @param \Magento\Framework\App\Helper\Context              $context
+     * @param \Magento\Store\Model\StoreManagerInterface         $storeManager
+     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param \Magento\Framework\App\ResourceConnection          $resource
+     * @param Dir                                                $moduleDir
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -137,7 +137,7 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
         return $configs;
     }
 
-    public function checkTableExists($tableName,  $connection = null) 
+    public function checkTableExists($tableName,  $connection = null)
     {
         if(!$connection) {
             $connection = $this->_resource->getConnection();
@@ -254,27 +254,45 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
         return $configs;
     }
 
-    public function getModuleTables() 
+    public function getModuleTables()
     {
         $sql_tables = [
-        "Lof_Formbuilder" => [
-        "lof_formbuilder_form", "lof_formbuilder_form_customergroup","lof_formbuilder_form_store","lof_formbuilder_message","lof_formbuilder_model_category","lof_formbuilder_model"],
-        "Lof_Faq" => ["lof_faq_category","lof_faq_category_store","lof_faq_question","lof_faq_question_category","lof_faq_question_product", "lof_faq_question_relatedquestion","lof_faq_question_store", "lof_faq_question_tag", "lof_faq_question_vote"],
-        "Lof_FollowUpEmail" => ["lof_followupemail_email","lof_followupemail_email_store","lof_followupemail_queue","lof_followupemail_sms","lof_followupemail_email_product_types", "lof_followupemail_email_customer_groups","lof_followupemail_email_order_status", "lof_followupemail_history", "lof_followupemail_blacklist"],
-        "Lof_Gallery" => ["lof_gallery_banner_category","lof_gallery_banner","lof_gallery","lof_gallery_category_store","lof_gallery_banner_product", "lof_gallery_banner","lof_gallery_album","lof_gallery_album_category","lof_gallery_album_tag","lof_gallery_album_product","lof_gallery_album_image","lof_gallery_album_store","lof_gallery_album_post","lof_gallery_tag","lof_gallery_category","lof_gallery_album_corestore"],
-        "Lof_Affiliate" => [
-        "lof_affiliate_commission", "lof_affiliate_campaign","lof_affiliate_store","lof_affiliate_group","lof_affiliate_banner","lof_affiliate_account","lof_affiliate_transaction","lof_affiliate_withdraw"],
-        "Lof_RewardPoints" => [
-        "lof_rewardpoints_earning_rule", "lof_rewardpoints_product_earning_points","lof_rewardpoints_earning_rule_relationships","lof_rewardpoints_earning_rule_customer_group","lof_rewardpoints_purchase","lof_rewardpoints_spending_rule","lof_rewardpoints_spending_rule_customer_group","lof_rewardpoints_product_spending_points","lof_rewardpoints_spending_rule_relationships","lof_rewardpoints_transaction","lof_rewardpoints_customer","lof_rewardpoints_email"],
-         "Lof_CouponCode" => [
-        "lof_coupon_code_log", "lof_couponcode_coupon","lof_couponcode_rule"],
-        "Lof_ProductTags" => [
-            "lof_producttags_tag", "lof_producttags_product","lof_producttags_store"],
-        "Lof_StoreLocator" => [
-        "lof_storelocator_storelocator", "lof_storelocator_storelocator_store","lof_storelocator_storelocator_tag","lof_storelocator_storelocator_category","lof_storelocator_dealer","lof_storelocator_dealer_category","lof_storelocator_dealer_review"],
-        "Lof_RequestForQuote" => ["lof_rfq_quote"],
-        "Lof_Supplier" => ["lof_supplier_group", "lof_supplier","lof_supplier_store","lof_supplier_product","lof_supplier_price_lists"],
-        "Lof_PromotionBar" => ["lof_promotionbar_banner", "lof_promotionbar_store","lof_promotionbar_customer_group","lof_promotionbar_product","lof_promotionbar_category"]
+            "Lof_Formbuilder" => [
+            "lof_formbuilder_form", "lof_formbuilder_form_customergroup","lof_formbuilder_form_store","lof_formbuilder_message","lof_formbuilder_model_category","lof_formbuilder_model"],
+            "Lof_Faq" => ["lof_faq_category","lof_faq_category_store","lof_faq_question","lof_faq_question_category","lof_faq_question_product", "lof_faq_question_relatedquestion","lof_faq_question_store", "lof_faq_question_tag", "lof_faq_question_vote"],
+            "Lof_FollowUpEmail" => ["lof_followupemail_email","lof_followupemail_email_store","lof_followupemail_queue","lof_followupemail_sms","lof_followupemail_email_product_types", "lof_followupemail_email_customer_groups","lof_followupemail_email_order_status", "lof_followupemail_history", "lof_followupemail_blacklist"],
+            "Lof_Gallery" => ["lof_gallery_banner_category","lof_gallery_banner","lof_gallery","lof_gallery_category_store","lof_gallery_banner_product", "lof_gallery_banner","lof_gallery_album","lof_gallery_album_category","lof_gallery_album_tag","lof_gallery_album_product","lof_gallery_album_image","lof_gallery_album_store","lof_gallery_album_post","lof_gallery_tag","lof_gallery_category","lof_gallery_album_corestore"],
+            "Lof_Affiliate" => [
+            "lof_affiliate_commission", "lof_affiliate_campaign","lof_affiliate_store","lof_affiliate_group","lof_affiliate_banner","lof_affiliate_account","lof_affiliate_transaction","lof_affiliate_withdraw"],
+            "Lof_RewardPoints" => [
+            "lof_rewardpoints_earning_rule", "lof_rewardpoints_product_earning_points","lof_rewardpoints_earning_rule_relationships","lof_rewardpoints_earning_rule_customer_group","lof_rewardpoints_purchase","lof_rewardpoints_spending_rule","lof_rewardpoints_spending_rule_customer_group","lof_rewardpoints_product_spending_points","lof_rewardpoints_spending_rule_relationships","lof_rewardpoints_transaction","lof_rewardpoints_customer","lof_rewardpoints_email"],
+            "Lof_CouponCode" => [
+            "lof_coupon_code_log", "lof_couponcode_coupon","lof_couponcode_rule"],
+            "Lof_ProductTags" => [
+                "lof_producttags_tag", "lof_producttags_product","lof_producttags_store"],
+            "Lof_StoreLocator" => [
+            "lof_storelocator_storelocator", "lof_storelocator_storelocator_store","lof_storelocator_storelocator_tag","lof_storelocator_storelocator_category","lof_storelocator_dealer","lof_storelocator_dealer_category","lof_storelocator_dealer_review"],
+            "Lof_RequestForQuote" => ["lof_rfq_quote"],
+            "Lof_Supplier" => ["lof_supplier_group", "lof_supplier","lof_supplier_store","lof_supplier_product","lof_supplier_price_lists"],
+            "Lof_PromotionBar" => ["lof_promotionbar_banner", "lof_promotionbar_store","lof_promotionbar_customer_group","lof_promotionbar_product","lof_promotionbar_category"],
+            "Lofmp_Blog" => [
+                "lofmp_blog_category",
+                "lofmp_blog_category_store",
+                "lofmp_blog_tag",
+                "lofmp_blog_tag_store",
+                "lofmp_blog_post",
+                "lofmp_blog_post_category",
+                "lofmp_blog_post",
+                "lofmp_blog_post_products_related",
+                "lofmp_blog_post_related",
+                "lofmp_blog_post_store",
+                "lofmp_blog_post_tag",
+                "lofmp_blog_post_vote",
+                "lofmp_blog_comment",
+                "lofmp_blog_comment_store",
+                "lofmp_blog_setting",
+                "lofmp_sellerblog_setting"
+            ],
         ];
         return $sql_tables;
     }

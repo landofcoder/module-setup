@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -47,7 +47,7 @@ class LofModules implements \Magento\Framework\Option\ArrayInterface
         $modules = $this->_moduleList->getNames();
         sort($modules);
         foreach ($modules as $k => $v) {
-            if(preg_match("/Lof/", $v) || preg_match("/Lof/", $v)) {
+            if(preg_match("/Lof/", $v) || preg_match("/Lofmp/", $v)) {
                 $output[$k] = [
                 'value' => $v,
                 'label' => $v
