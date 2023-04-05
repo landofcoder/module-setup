@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -48,10 +48,10 @@ class Save extends \Magento\Backend\App\Action
     protected $_filesystem;
 
     /**
-     * @param \Magento\Backend\App\Action\Context        $context           
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory 
-     * @param \Lof\Setup\Helper\Export                   $exportHelper        
-     * @param \Magento\Framework\Filesystem              $filesystem        
+     * @param \Magento\Backend\App\Action\Context        $context
+     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param \Lof\Setup\Helper\Export                   $exportHelper
+     * @param \Magento\Framework\Filesystem              $filesystem
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
@@ -104,7 +104,7 @@ class Save extends \Magento\Backend\App\Action
         $fileName = str_replace(" ", "-", $fileName);
         if(!empty($content) && isset($params['isdowload']) && $params['isdowload'] ) {
             $content['created_at'] = date("m/d/Y h:i:s a");
-            $content = \Zend_Json::encode($content);
+            $content = \Laminas\Json\Json::encode($content);
             $this->_sendUploadResponse($fileName, $content);
         }
 
@@ -113,7 +113,7 @@ class Save extends \Magento\Backend\App\Action
             $dir = $this->_filesystem->getDirectoryWrite(DirectoryList::APP);
             $file = null;
             $content['created_at'] = date("m/d/Y h:i:s a");
-            $content = \Zend_Json::encode($content);
+            $content = \Laminas\Json\Json::encode($content);
             $filePath = "design/frontend/{$folder}/backup/".$fileName;
             try{
                 $dir->writeFile($filePath, $content);
