@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -52,14 +52,17 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $lofthemeDirectory;
 
+    protected $_coreRegistry;
+    protected $_themeModel;
+
     /**
-     * @param \Magento\Framework\App\Helper\Context                      $context                
-     * @param \Magento\Store\Model\StoreManagerInterface                 $storeManager           
-     * @param \Magento\Framework\Registry                                $registry               
-     * @param \Magento\Cms\Model\Template\FilterProvider                 $filterProvider         
-     * @param \Magento\Theme\Model\ResourceModel\Theme\CollectionFactory $collectionThemeFactory 
-     * @param \Magento\Framework\Filesystem                              $filesystem           
-     * @param \Magento\Theme\Model\Theme                                 $themeModel             
+     * @param \Magento\Framework\App\Helper\Context                      $context
+     * @param \Magento\Store\Model\StoreManagerInterface                 $storeManager
+     * @param \Magento\Framework\Registry                                $registry
+     * @param \Magento\Cms\Model\Template\FilterProvider                 $filterProvider
+     * @param \Magento\Theme\Model\ResourceModel\Theme\CollectionFactory $collectionThemeFactory
+     * @param \Magento\Framework\Filesystem                              $filesystem
+     * @param \Magento\Theme\Model\Theme                                 $themeModel
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -107,7 +110,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param  Mage_Catalog_Model_Product $_product
      * @return bool
      */
-    public function checkProductIsNew($_product = null) 
+    public function checkProductIsNew($_product = null)
     {
         $from_date = $_product->getNewsFromDate();
         $to_date = $_product->getNewsToDate();
@@ -136,7 +139,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $is_new;
     }
 
-    public function isNewProduct( $created_date, $num_days_new = 3) 
+    public function isNewProduct( $created_date, $num_days_new = 3)
     {
         $check = false;
 
@@ -154,7 +157,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $check;
     }
 
-    public function subString($text, $length = 100, $replacer = '...', $is_striped = true) 
+    public function subString($text, $length = 100, $replacer = '...', $is_striped = true)
     {
         $text = ($is_striped == true) ? strip_tags($text) : $text;
         if (strlen($text) <= $length) {
@@ -171,7 +174,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $html;
     }
 
-    public function getAllStores() 
+    public function getAllStores()
     {
         $allStores = $this->_storeManager->getStores();
         $stores = array();
@@ -193,7 +196,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
 
         $store = $this->_storeManager->getStore($storeId);
-        
+
         $themeId =  $this->scopeConfig->getValue(
             \Magento\Framework\View\DesignInterface::XML_PATH_THEME_ID,
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE,

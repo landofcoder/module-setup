@@ -46,6 +46,8 @@ class Export extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $_moduleDir;
 
+    protected $_resource;
+
     /**
      * @param \Magento\Framework\App\Helper\Context              $context
      * @param \Magento\Store\Model\StoreManagerInterface         $storeManager

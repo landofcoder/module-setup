@@ -59,6 +59,9 @@ class Save extends \Magento\Backend\App\Action
      */
     protected $_configResource;
 
+    protected $_resource;
+    protected $mediaConfig;
+
     /**
      * @param \Magento\Backend\App\Action\Context                          $context
      * @param \Magento\Framework\View\Result\PageFactory                   $resultPageFactory

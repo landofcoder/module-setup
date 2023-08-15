@@ -1,18 +1,18 @@
 <?php
 /**
  * Landofcoder
- * 
+ *
  * NOTICE OF LICENSE
- * 
+ *
  * This source file is subject to the landofcoder.com license that is
  * available through the world-wide-web at this URL:
  * http://landofcoder.com/license
- * 
+ *
  * DISCLAIMER
- * 
+ *
  * Do not edit or add to this file if you wish to upgrade this extension to newer
  * version in the future.
- * 
+ *
  * @category  Landofcoder
  * @package   Lof_Setup
  * @copyright Copyright (c) 2016 Landofcoder (http://www.landofcoder.com/)
@@ -29,10 +29,12 @@ class Import extends \Magento\Framework\App\Helper\AbstractHelper
      */
     protected $_lofData;
 
+    protected $_resource;
+
     /**
-     * @param \Magento\Framework\App\Helper\Context     $context  
-     * @param \Magento\Framework\App\ResourceConnection $resource 
-     * @param \Lof\Setup\Helper\Data                    $lofData  
+     * @param \Magento\Framework\App\Helper\Context     $context
+     * @param \Magento\Framework\App\ResourceConnection $resource
+     * @param \Lof\Setup\Helper\Data                    $lofData
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -44,7 +46,7 @@ class Import extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_lofdata = $lofData;
     }
 
-    public function buildQueryImport($data = array(), $table_name = "", $override = true, $store_id = 0, $ignore_columns = null,  $where = '') 
+    public function buildQueryImport($data = array(), $table_name = "", $override = true, $store_id = 0, $ignore_columns = null,  $where = '')
     {
         $query = false;
         $binds = array();
